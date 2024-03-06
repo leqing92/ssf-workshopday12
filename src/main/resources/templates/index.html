@@ -29,17 +29,22 @@
             </table>
             <input type="hidden" name = "cart" data-th-value="${cart}">
         </form>
-
-        <h2>Item in cart</h2>
-        <table border="1">
-            <thead>
-                <th>Item</th>
-                <th>Quantity</th>
-            </thead>
-            <tr data-th-each="item : ${cartList}">
-                <td><span data-th-text="${item.name}"></span></td>
-                <td><span data-th-text="${item.quantity}"></span></td>
-            </tr>
-        </table>
+        <div data-th-if = "${#lists.isEmpty(cartList)}">
+            <h2>The cart is empty</h2>
+        </div>
+        <div data-th-unless="${#lists.isEmpty(cartList)}">
+            <h2>Item in cart</h2>
+            <table border="1">
+                <thead>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </thead>
+                <tr data-th-each="item : ${cartList}">
+                    <td><span data-th-text="${item.name}"></span></td>
+                    <td><span data-th-text="${item.quantity}"></span></td>
+                </tr>
+            </table>
+        </div>
+        
     </body>
 </html>
