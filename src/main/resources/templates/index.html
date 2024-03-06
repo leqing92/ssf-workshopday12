@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Shopping cart</h1>
+
+        <form method = "GET" action="/cart">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input type="text" name="name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quanity:</td>
+                    <td>
+                        <input type="text" name="quantity" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit"> Add </button></td>
+                </tr>
+            </table>
+            <input type="hidden" name = "cart" data-th-value="${cart}">
+        </form>
+
+        <h2>Item in cart</h2>
+        <table border="1">
+            <thead>
+                <th>Item</th>
+                <th>Quantity</th>
+            </thead>
+            <tr data-th-each="item : ${cartList}">
+                <td><span data-th-text="${item.name}"></span></td>
+                <td><span data-th-text="${item.quantity}"></span></td>
+            </tr>
+        </table>
+    </body>
+</html>
